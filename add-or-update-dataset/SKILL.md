@@ -89,8 +89,10 @@ what is available, run `crucible dataset ingestors`.
 
 ## Step 5 — Assemble the dataset fields
 
-Populate fields only from what the user actually provided. Do not infer values from
-filenames, directory paths, or file contents at this step.
+You may infer values from context, but confirm anything inferred with the user before
+creating the dataset.
+
+Do not open data files to extract metadata. That is the ingestor's job.
 
 Users describe fields loosely, so interpret their wording:
 
@@ -192,6 +194,19 @@ If the user names a sample with no Crucible record, offer to create it with
 `crucible sample create` and link it.
 
 Finish with `crucible open <DSID>` to show the user the result in the Graph Explorer.
+
+---
+
+## Working with related entities
+
+This skill and the sample skill each describe the full picture, so following both
+literally could loop: create a dataset → notice a sample is needed → create the sample →
+notice a dataset is needed.
+
+The rule is simple: **finish the thing the user asked for, then attach what it needs.**
+Whatever you are creating right now is the subject. Related entities are looked up
+first; only create one if it genuinely does not exist, and only after the user confirms.
+Once something exists, it is a link target — never revisit it as a new subject.
 
 ---
 
