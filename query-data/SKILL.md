@@ -30,6 +30,18 @@ Every query is scoped to what your credentials can read. "No results" can mean t
 does not exist *or* that you cannot see it — do not report absence as fact without
 saying which you checked.
 
+## MFIDs
+
+**MFID is the ID format shared across record types.** The `unique_id` field on a
+dataset, sample, file, or instrument is an MFID — the name is not specific to files, and
+`<DSID>` and `<SAMPLE_MFID>` below are just MFIDs belonging to a dataset or sample.
+(Projects are the exception: they are identified by `project_id`, not an MFID.)
+
+An MFID therefore tells you nothing about what type of record it points at. Do not infer
+one, and do not assume a user who calls an ID an "MFID" means a file. If you do not know
+the resource type you can attempt to find the resource with simply,
+`crucible get <MFID>`.
+
 ## Pick the query surface
 
 | The user wants | Use |
